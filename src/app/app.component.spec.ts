@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'Ang3MicBym'`, () => {
+  it(`should have as title 'AngU1-MicBym'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('Ang3MicBym');
+    expect(app.title).toEqual('AngU1-MicBym');
   });
 
   it('should render title in a h1 tag', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to Ang3MicBym!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to AngU1-MicBym!');
   });
 });

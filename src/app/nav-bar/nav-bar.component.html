@@ -1,0 +1,14 @@
+<nav>
+  <div style="text-align:center">
+    <ul class="nav nav-pills nav-fill">
+      <li class="nav-item">
+        <a class="nav-link text-danger bg-light" *ngIf="this.authservice.checkIfLoggedIn()" [routerLink]="['/login']"
+          routerLinkActive="active">Logout</a>
+        <a class="nav-link" *ngIf="!this.authservice.checkIfLoggedIn()" [routerLink]="['/login']" routerLinkActive="active">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
+      </li>
+    </ul>
+  </div>
+</nav>

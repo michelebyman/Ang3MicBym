@@ -1,0 +1,16 @@
+<div class="wrapper">
+  <div class="input-group input-group-lg">
+    <!-- [(ngModel)]="value" is a two way binding method -->
+    <input [(ngModel)]="value" class="form-control mb-3 inputColor" type="text" placeholder="New user...">
+
+  </div>
+
+  <div>
+    <!-- Two @Outputs to dashboard where we receive them through the html file (addUser)="onAddUser($event) and they become a variable which we can use in the dashboard.component.ts  -->
+    <button [disabled]="value === ''" (click)="onClickAddUser()" class="btn btn-success mr-3" type="button" name="button">Add</button>
+
+    <button [disabled]="userL.length === 1" (click)="onClickRemoveUser()" class="btn btn-danger" type="button" name="button">Remove</button>
+
+  </div>
+
+</div>

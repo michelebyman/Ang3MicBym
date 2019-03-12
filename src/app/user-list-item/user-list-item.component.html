@@ -1,0 +1,3 @@
+<!--we use ngCLass to be able to toggle between to classes on every li-item and we receives variable from -->
+<li class="list-group-item background mb-2"> <a [ngClass]="changeColor ? 'classOne' : 'classTwo'" [routerLink]="['/user', user]">{{user}}</a>
+</li>

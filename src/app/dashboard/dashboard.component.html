@@ -1,0 +1,15 @@
+<div class="wrapper-column">
+
+  <h1>UPPGIFT 2 av Michele Byman</h1>
+
+  <!-- checks if there is a user or not (*ngIf)-->
+  <p *ngIf="!user">you are not logged in</p>
+
+  <!-- checks if there is a user or not (*ngIf) -->
+  <div class="wrapper-row" *ngIf="user">
+    <!--Adding child to dashboard and using @Input[] and @Output() to be able to send and receive data from the child   -->
+    <app-user-list [users]="userList"></app-user-list>
+
+    <app-edit-users [userL]="userList" (addUser)="onAddUser($event)" (removeUser)="onRemoveUser($event)"></app-edit-users>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="styleWrapper">
+
+
+  <div class="wrapper mt-5" *ngIf="!user">
+    <h3>Please Login</h3>
+    <div class="input-group input-group-lg width">
+
+      <!-- [(ngModel)]="value" is a two way binding method -->
+      <input [(ngModel)]="username" class="form-control mb-3 inputColor" type="text" placeholder="username">
+    </div>
+
+    <div>
+      <!-- One @Output to dashboard where we receive them through the html file (addUser)="onAddUser($event) and they become a variable which we can use in the dashboard.component.ts  -->
+      <button (click)="login()" [disabled]="username === ''" class="btn btn-primary mr-3" type="button" name="button">Login</button>
+    </div>
+  </div>
+
+  <div class="styleLogout" *ngIf="user">
+    <h3>Do you want to logout?</h3>
+    <button (click)="logout()" class="btn btn-danger mr-3" type="button" name="button">Logout</button>
+  </div>
+</div>

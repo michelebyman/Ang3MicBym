@@ -1,0 +1,26 @@
+.width {
+  width: 300px;
+}
+
+.wrapper,
+.styleWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.styleLogout,
+.wrapper {
+  width: 40%;
+  background-color: grey;
+  padding: 60px;
+  color: white;
+  border-radius: 5px;
+}
+
+.styleWrapper {
+  background-color: black;
+  height: 97vh;
+  width: 100vw;
+}

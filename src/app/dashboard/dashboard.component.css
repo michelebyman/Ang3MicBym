@@ -1,0 +1,14 @@
+.wrapper-column {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  height: 96vh;
+  width: 100vw;
+}
+
+div {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: grey;
+}

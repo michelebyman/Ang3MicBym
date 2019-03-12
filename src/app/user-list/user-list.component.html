@@ -1,0 +1,9 @@
+<div>
+  <!-- *ngFor="let user of users" is a for of loop in Angular using *ngFor and [changeColor]="changeColor" is the way we receive something using @Input in the child component. [user]="user" is the way we receive something using @Input in the child component. -->
+  <ul class="list-group mr-5">
+    <app-user-list-item [changeColor]="changeColor" *ngFor="let user of users" [user]="user"></app-user-list-item>
+  </ul>
+
+  <!-- (click)="onClickToggle()" is the way we call a function from the ts file  -->
+  <button (click)="onClickToggle()" type="button" class="btn btn-primary btn-lg" name="button">Toogle Colors</button>
+</div>
