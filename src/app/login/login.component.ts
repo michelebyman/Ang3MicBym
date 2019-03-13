@@ -10,6 +10,7 @@ import { AdminLogin } from '../admin-login.model';
 export class LoginComponent implements OnInit {
   email: string = "";
   model: AdminLogin = new AdminLogin('','');
+  user:string;
  
 
   constructor(private authService: AuthService ) {

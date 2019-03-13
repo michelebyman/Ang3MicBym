@@ -11,7 +11,7 @@ import { UsersService } from '../users.service';
 export class DashboardComponent implements OnInit {
   //creating a property as an Array passing in a string
   userList: object[] = [];
-  user: string;
+  user: any;
 
   constructor(private authService: AuthService, private http: UsersService) {
     // runs the method
@@ -37,7 +37,7 @@ export class DashboardComponent implements OnInit {
 
 
   //receives parameter from edit-users.component.ts(@Output addUser: new EventEmitter) through the dashboard.component.html where we add (addUser)="onAddUser($event) then Adds user to userList[]
-  onAddUser(user: string): void {
+  onAddUser(user: any): void {
     this.userList.push(user);
   }
   //removes user from userList[] but not the last one
