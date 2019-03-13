@@ -37,7 +37,7 @@
         <div [hidden]="!password.touched || password.valid" class="alert alert-danger">
           Password is required
         </div>
-        <button class="btn btn-primary mr-3" type="submit" name="button">Login</button>
+        <button [disabled]="model.password === ''" class="btn btn-primary mr-3" type="submit" name="button">Login</button>
         <button class="btn btn-primary mr-3" type="button" name="button">Create new user</button>
       </form>
     </div>
