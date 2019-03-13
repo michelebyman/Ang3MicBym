@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import { AdminLogin } from '../admin-login.model';
 //handle user methods login and logout
 @Component({
   selector: 'app-login',
@@ -8,10 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username: string = "";
-  user: string;
+  email: string = "";
+  model: AdminLogin = new AdminLogin('','');
+ 
 
-  constructor(private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService ) {
+   
   }
 
   ngOnInit() {
@@ -19,15 +21,14 @@ export class LoginComponent implements OnInit {
     this.checkUser();
   }
 
-  //when someone press the login button and calls the service function- login() with the parameter username and length control and regex match to see that the user includes a number
-  login(): void {
-    if (this.username.length >= 10 && this.username.match(/\d/)) {
-      this.authService.login(this.username)
-      this.router.navigateByUrl('/dashboard');
-    } else {
-      alert("you ned at least 10 characters including a number");
-    }
+  onSubmit(): void {
+    this.authService.login(this.model);        
   }
+
+  //when someone press the login button and calls the service function- login() with the parameter username and length control and regex match to see that the user includes a number
+ 
+   
+  
 
   //when someone press the logout button and calls the service function- logout() with the parameter and calls the checkUser
   logout(): void {

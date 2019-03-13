@@ -4,14 +4,49 @@
   <div class="wrapper mt-5" *ngIf="!user">
     <h3>Please Login</h3>
     <div class="input-group input-group-lg width">
+      <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+     
 
-      <!-- [(ngModel)]="value" is a two way binding method -->
-      <input [(ngModel)]="username" class="form-control mb-3 inputColor" type="text" placeholder="username">
+        <!-- [(ngModel)]="value" is a two way binding method -->
+        <label for="email">Username</label>
+        <input 
+        id="email" 
+        required email
+        [(ngModel)]="model.email"  
+        name="email" 
+        class="form-control mb-3 inputColor" 
+        type="email"
+        placeholder="email"
+        #email="ngModel" 
+        >
+        <div [hidden]="!email.touched || email.valid" class="alert alert-danger">
+          Email is required
+        </div>
+        <label for="password">Password</label>
+        <input 
+        id="password" 
+        required
+        minlength="10"        
+        [(ngModel)]="model.password" 
+        name="password" 
+        class="form-control mb-3 inputColor" 
+        type="password"
+        placeholder="password"
+        #password="ngModel"
+        >
+        <div [hidden]="!password.touched || password.valid" class="alert alert-danger">
+          Password is required
+        </div>
+        <button class="btn btn-primary mr-3" type="submit" name="button">Login</button>
+        <button class="btn btn-primary mr-3" type="button" name="button">Create new user</button>
+      </form>
     </div>
+
+
 
     <div>
       <!-- One @Output to dashboard where we receive them through the html file (addUser)="onAddUser($event) and they become a variable which we can use in the dashboard.component.ts  -->
-      <button (click)="login()" [disabled]="username === ''" class="btn btn-primary mr-3" type="button" name="button">Login</button>
+      
     </div>
   </div>
 

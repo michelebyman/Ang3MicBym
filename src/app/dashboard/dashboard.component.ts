@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { UsersService } from '../users.service';
+
 //handle users in the userList and checks if user is authorized or not
 @Component({
   selector: 'app-dashboard',
@@ -8,12 +10,21 @@ import { AuthService } from '../auth.service';
 })
 export class DashboardComponent implements OnInit {
   //creating a property as an Array passing in a string
-  userList: string[] = ["Users should be added or removed"];
+  userList: object[] = [];
   user: string;
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private http: UsersService) {
     // runs the method
     this.checkUser();
+    this.http.getJson().subscribe(
+      (response: any) => {
+        response.forEach(element => {
+          this.userList.push(element.name)
+        })
+      },
+      (error) => console.log('error', error),
+      () => console.log('completed')
+    );;
   }
 
   ngOnInit() {
