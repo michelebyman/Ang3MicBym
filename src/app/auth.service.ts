@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AdminFull } from './admin-full.model';
 import { AdminLogin } from './admin-login.model';
 import { Router } from '@angular/router';
- // handle login service and logout service
+ // handle login service and logout service checks if a user matches the email and password in the array below, navigates to dashboard if match. 
 @Injectable({
   providedIn: 'root'
 })
@@ -23,20 +23,21 @@ import { Router } from '@angular/router';
 
   constructor(private router: Router) {
   }
-  // checks if there is a user in local storage
+  // checks if there is a user in local storage and returns it
   checkIfLoggedIn(){
     return localStorage.getItem('user');
   }
-  // gets a parameter from the input field and store ut in local storage
+  // gets a parameter from the input field and store it in local storage if it match the array above using the checkLogin function for validation
   public login(user:AdminLogin){
-    let userLoggedIn = this.checkLogin(user);
+    let userLoggedIn = this.checkLogin(user);  
     if (userLoggedIn.length) {
       localStorage.setItem('user', user.email);
       this.router.navigateByUrl('/dashboard');
     } 
   }
-
+  // validation-function with filter to check if the user match any of the users in the list above
   private checkLogin(user:AdminLogin){
+    // returns the user to the checkLogin where we set the localStorage
     const newArr = this.admins.filter((admin) => {
       if (admin.email === user.email && admin.password === user.password) {
         return admin;

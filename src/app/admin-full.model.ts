@@ -1,3 +1,4 @@
+// sets a model for a full new user
 export class AdminFull {
     constructor(
         public firstName: string,

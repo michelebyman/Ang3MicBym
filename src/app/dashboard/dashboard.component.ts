@@ -2,24 +2,24 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { UsersService } from '../users.service';
 
-//handle users in the userList and checks if user is authorized or not
+//handle users in the userList and checks if user is authorized or not and 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  //creating a property as an Array passing in a string
-  userList: object[] = [];
+  userList: any[] = [];
   user: any;
 
   constructor(private authService: AuthService, private http: UsersService) {
     // runs the method
     this.checkUser();
+    //subscribes to Json and pushes the name of the object to our userList 
     this.http.getJson().subscribe(
       (response: any) => {
         response.forEach(element => {
-          this.userList.push(element.name)
+          this.userList.push(element.name)  
         })
       },
       (error) => console.log('error', error),

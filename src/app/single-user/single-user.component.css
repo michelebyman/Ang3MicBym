@@ -20,4 +20,17 @@ h3 {
   color: white;
   font-size: 2rem;
 }
+
+.wrapperOne {
+  display: flex; 
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.tags{
+  margin-right: 15px;
+}
  

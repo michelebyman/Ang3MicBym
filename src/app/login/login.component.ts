@@ -22,14 +22,10 @@ export class LoginComponent implements OnInit {
     this.checkUser();
   }
 
+  // calls the login-function and passes in the AdminLogin-model
   onSubmit(): void {
     this.authService.login(this.model);        
   }
-
-  //when someone press the login button and calls the service function- login() with the parameter username and length control and regex match to see that the user includes a number
- 
-   
-  
 
   //when someone press the logout button and calls the service function- logout() with the parameter and calls the checkUser
   logout(): void {

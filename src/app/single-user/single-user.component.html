@@ -1,10 +1,14 @@
 <div class="wrapper">
-  <h1>You just navigated through the user list</h1>
+<h1 *ngIf="value">You just navigated through the user list that comes fron JsonPlaceholder</h1>
+<h1 *ngIf="!value">You just navigated through the user list were you created a new user, NOT from the JsonPlaceholder list</h1>
   <h3>User: {{userId | uppercase}}</h3>
-
-<p>Name: {{newUserName}}</p>
-<p>Username: {{newUserUsername}}</p>
-<p>City: {{newUserCity}}</p>
-<p>Street: {{newUserStreet}}</p>
-<p>Zipcode: {{newUserZip}}</p>
+<div class="wrapperOne" *ngIf="value">
+  <div class="tags">
+    <p>Name: {{userInfo[0].name}}</p>
+    <p>Username: {{userInfo[0].username}} </p>
+    <p>City: {{userInfo[0].address.city}}</p>
+    <p>Street: {{userInfo[0].address.street}}</p>
+    <p>Zipcode: {{userInfo[0].address.zipcode}} </p>
+  </div>
+</div>
 </div>
