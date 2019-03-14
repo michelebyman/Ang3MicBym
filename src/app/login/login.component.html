@@ -1,44 +1,29 @@
 <div class="styleWrapper">
 
 
-  <div class="wrapper mt-5" *ngIf="!user">
+  <div class="wrapper mt-5" *ngIf="showRegisterView && !user">
     <h3>Please Login</h3>
     <div class="input-group input-group-lg width">
       <form (ngSubmit)="onSubmit()" #userForm="ngForm">
-     
+
 
         <!-- [(ngModel)]="value" is a two way binding method -->
         <label for="email">Username</label>
-        <input 
-        id="email" 
-        required email
-        [(ngModel)]="model.email"  
-        name="email" 
-        class="form-control mb-3 inputColor" 
-        type="email"
-        placeholder="email"
-        #email="ngModel" 
-        >
+        <input id="email" required email [(ngModel)]="loginModel.email" name="email" class="form-control mb-3 inputColor"
+          type="email" placeholder="email" #email="ngModel">
         <div [hidden]="!email.touched || email.valid" class="alert alert-danger">
           Email is required
         </div>
         <label for="password">Password</label>
-        <input 
-        id="password" 
-        required
-        minlength="10"        
-        [(ngModel)]="model.password" 
-        name="password" 
-        class="form-control mb-3 inputColor" 
-        type="password"
-        placeholder="password"
-        #password="ngModel"
-        >
+        <input id="password" required minlength="10" [(ngModel)]="loginModel.password" name="password" class="form-control mb-3 inputColor"
+          type="password" placeholder="password" #password="ngModel">
         <div [hidden]="!password.touched || password.valid" class="alert alert-danger">
           Password is required
         </div>
-        <button [disabled]="model.password === ''" class="btn btn-primary mr-3" type="submit" name="button">Login</button>
-        <button class="btn btn-primary mr-3" type="button" name="button">Create new user</button>
+        <button [disabled]="loginModel.password === ''" class="btn btn-primary mr-3" type="submit" name="button">Login</button>
+
+        <button (click)="toggleView()" class="btn btn-primary mr-3" type="button" name="button">Create new user</button>
+
       </form>
     </div>
   </div>
@@ -47,4 +32,54 @@
     <h3>Do you want to logout?</h3>
     <button (click)="logout()" class="btn btn-danger mr-3" type="button" name="button">Logout</button>
   </div>
+
+
+
+  <!-- here is the create new user interface -->
+  <div class="wrapper mt-5" *ngIf="!showRegisterView && !user">
+    <h3>Create new user</h3>
+    <div class="input-group input-group-lg width">
+      <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+
+
+        <!-- [(ngModel)]="value" is a two way binding method -->
+        <label for="email">Email</label>
+        <input id="email" required email [(ngModel)]="creatNewUserModel.email" name="email" class="form-control mb-3 inputColor"
+          type="email" placeholder="email" #email="ngModel">
+        <div [hidden]="!email.touched || email.valid" class="alert alert-danger">
+          Email is required
+        </div>
+        <label for="password">Password</label>
+        <input id="password" required minlength="10" [(ngModel)]="creatNewUserModel.password" name="password" class="form-control mb-3 inputColor"
+          type="password" placeholder="password" #password="ngModel">
+        <div [hidden]="!password.touched || password.valid" class="alert alert-danger">
+          First Name is required
+        </div>
+        <label for="firstName">First Name</label>
+        <input id="firstName" required minlength="1" [(ngModel)]="creatNewUserModel.firstName" name="firstName" class="form-control mb-3 inputColor"
+          type="firstName" placeholder="first name" #firstName="ngModel">
+        <div [hidden]="!firstName.touched || firstName.valid" class="alert alert-danger">
+          First is required
+        </div>
+        <label for="lastName">Last Name</label>
+        <input id="lastName" required minlength="1" [(ngModel)]="creatNewUserModel.lastName" name="lastName" class="form-control mb-3 inputColor"
+          type="lastName" placeholder="last name" #lastName="ngModel">
+        <div [hidden]="!lastName.touched || lastName.valid" class="alert alert-danger">
+          Last Name is required
+        </div>
+        <button (click)="createNewUser()" [disabled]="creatNewUserModel.password === ''" class="btn btn-success mr-3"
+          type="submit" name="button">Create
+          User</button>
+
+        <button (click)="toggleView()" class="btn btn-primary mr-3" type="button" name="button">Log in with existing
+          user </button>
+
+      </form>
+    </div>
+  </div>
+
+
+<!-- <app-error *ngIf="!user"></app-error> -->
 </div>
+
+
