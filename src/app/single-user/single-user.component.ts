@@ -22,7 +22,6 @@ export class SingleUSerComponent implements OnInit {
         const newObjectUser:any = response.filter(user => {
           return user.name === this.userId
         }) 
-        console.log(newObjectUser);
         // check if the user comes from Json or if it is a created user, we set a value so we can toggle in the html
         if (newObjectUser.length) {
           this.userInfo = newObjectUser;
