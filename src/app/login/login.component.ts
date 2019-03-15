@@ -14,10 +14,11 @@ export class LoginComponent implements OnInit {
   user:string;
   showRegisterView:boolean = true;
   creatNewUserModel: AdminFull = new AdminFull('', '', '', '');
+
  
 
   constructor(private authService: AuthService ) {
-   
+    
   }
 
   ngOnInit() {
@@ -27,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   // calls the login-function and passes in the AdminLogin-model
   onSubmit(): void {
-    this.authService.login(this.loginModel);        
+    this.authService.login(this.loginModel); 
   }
 
   //when someone press the logout button and calls the service function- logout() with the parameter and calls the checkUser
@@ -41,12 +42,14 @@ export class LoginComponent implements OnInit {
     this.user = this.authService.checkIfLoggedIn();
   }
 
-
+//toggle view when we want to register a user 
   toggleView(){
-    this.showRegisterView = !this.showRegisterView; 
+    this.showRegisterView = !this.showRegisterView;
   }
 
+  //pushes the new user to admin
   createNewUser(){
     this.authService.admins.push(this.creatNewUserModel);
+    this.toggleView();
   }
 }

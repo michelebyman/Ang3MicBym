@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-error',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./error.component.css']
 })
 export class ErrorComponent implements OnInit {
+  @Input() failedUser:boolean;
 
-  constructor() { }
-
+  constructor(private authService: AuthService) { }
+  
   ngOnInit() {
   }
 
-}
+  closeModal(){
+    this.authService.userLoggedIn = !this.authService.userLoggedIn;
+    }
+    
+  }

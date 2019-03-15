@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
 })
 
   export class AuthService {
+    failedUser: boolean = false;
+    userLoggedIn:any;
   
   public admins: AdminFull[] = [{
     firstName: 'John',
@@ -29,8 +31,8 @@ import { Router } from '@angular/router';
   }
   // gets a parameter from the input field and store it in local storage if it match the array above using the checkLogin function for validation
   public login(user:AdminLogin){
-    let userLoggedIn = this.checkLogin(user);  
-    if (userLoggedIn.length) {
+    this.userLoggedIn = this.checkLogin(user);
+    if (this.userLoggedIn.length) {
       localStorage.setItem('user', user.email);
       this.router.navigateByUrl('/dashboard');
     } 
@@ -41,7 +43,7 @@ import { Router } from '@angular/router';
     const newArr = this.admins.filter((admin) => {
       if (admin.email === user.email && admin.password === user.password) {
         return admin;
-      }
+      } 
     });
 
     return newArr;
@@ -50,5 +52,6 @@ import { Router } from '@angular/router';
  // clear local storage 
   public logout(){
     localStorage.clear();
+    this.userLoggedIn = undefined;
   }
 }

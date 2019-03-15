@@ -1,7 +1,10 @@
-<div class="modalWrapper">
+<div class="modalWrapper" *ngIf="this.authService.userLoggedIn">
   <div class="wrapper">
     <h1 class="ml-3">
       Error
     </h1>
+    <button class="btn btn-dark" (click)="closeModal()" >X</button>
+    <hr>
+    <p>Please fill in correct credentials.</p>
   </div>
 </div>

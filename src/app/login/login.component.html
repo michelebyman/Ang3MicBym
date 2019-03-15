@@ -5,8 +5,7 @@
     <h3>Please Login</h3>
     <div class="input-group input-group-lg width">
       <form (ngSubmit)="onSubmit()" #userForm="ngForm">
-
-
+    
         <!-- [(ngModel)]="value" is a two way binding method -->
         <label for="email">Username</label>
         <input id="email" required email [(ngModel)]="loginModel.email" name="email" class="form-control mb-3 inputColor"
@@ -20,7 +19,7 @@
         <div [hidden]="!password.touched || password.valid" class="alert alert-danger">
           Password is required
         </div>
-        <button [disabled]="loginModel.password === ''" class="btn btn-primary mr-3" type="submit" name="button">Login</button>
+        <button  [disabled]="loginModel.password === ''" class="btn btn-primary mr-3" type="submit" name="button">Login</button>
 
         <button (click)="toggleView()" class="btn btn-primary mr-3" type="button" name="button">Create new user</button>
 
@@ -67,8 +66,9 @@
         <div [hidden]="!lastName.touched || lastName.valid" class="alert alert-danger">
           Last Name is required
         </div>
+       
         <button (click)="createNewUser()" [disabled]="creatNewUserModel.password === ''" class="btn btn-success mr-3"
-          type="submit" name="button">Create
+          type="button" name="button">Create
           User</button>
 
         <button (click)="toggleView()" class="btn btn-primary mr-3" type="button" name="button">Log in with existing
@@ -79,7 +79,7 @@
   </div>
 
 
-<!-- <app-error *ngIf="!user"></app-error> -->
+<app-error *ngIf="!user"></app-error>
 </div>
 
 
