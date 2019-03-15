@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
     this.showRegisterView = !this.showRegisterView;
   }
 
-  //pushes the new user to admin
+  //pushes the new user to admin and toggle between views
   createNewUser(){
     this.authService.admins.push(this.creatNewUserModel);
     this.toggleView();

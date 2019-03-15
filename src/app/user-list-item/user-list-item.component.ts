@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-// render all item it recievs from the user list component
+// render all item it receives from the user list component
 @Component({
   selector: 'app-user-list-item',
   templateUrl: './user-list-item.component.html',
@@ -7,9 +7,9 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 
 export class UserListItemComponent implements OnInit {
-  // recives a user from userList
+  // receives a user from userList
   @Input() user: string;
-  // recives a color from userList
+  // receives a color from userList
   @Input() changeColor: boolean;
 
   constructor() { }
